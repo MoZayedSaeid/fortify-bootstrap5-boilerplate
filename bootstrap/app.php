@@ -10,9 +10,12 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void {
-        //
+    ->withMiddleware(function (Middleware $middleware) {
+        // Middleware configuration goes here.
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
-        //
-    })->create();
+    ->withExceptions(function (Exceptions $exceptions) {
+        // Exception handling configuration goes here.
+    })
+    ->withProviders([
+        App\Providers\FortifyServiceProvider::class,
+    ])->create();
